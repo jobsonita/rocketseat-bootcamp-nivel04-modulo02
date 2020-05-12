@@ -10,7 +10,7 @@ Baseado nas aulas do curso [GoStack](https://rocketseat.com.br/gostack) (turma 1
 
 ## Sobre este projeto
 
-Este projeto demonstra a aplicação dos princípios de DDD e TDD em um back-end em NodeJS. Neste projeto, é utilizada a biblioteca jest.
+Este projeto demonstra a aplicação dos princípios de DDD e TDD em um back-end em NodeJS. Neste projeto, é utilizada a biblioteca jest. Para guiar o desenvolvimento, as funcionalidades deste sistema estão descritas em [features.md](features.md).
 
 Este repositório continua o desenvolvimento do back-end iniciado em [jobsonita/rocketseat-bootcamp-nivel02-modulo01](https://github.com/jobsonita/rocketseat-bootcamp-nivel02-modulo01) e continuado em [jobsonita/rocketseat-bootcamp-nivel02-modulo02](https://github.com/jobsonita/rocketseat-bootcamp-nivel02-modulo02) e [jobsonita/rocketseat-bootcamp-nivel04-modulo01](https://github.com/jobsonita/rocketseat-bootcamp-nivel04-modulo01).
 
