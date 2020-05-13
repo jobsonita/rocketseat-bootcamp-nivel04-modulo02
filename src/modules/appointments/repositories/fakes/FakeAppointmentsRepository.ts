@@ -6,7 +6,8 @@ import IAppointmentsRepository from '@modules/appointments/repositories/IAppoint
 
 import Appointment from '@modules/appointments/infra/typeorm/entities/Appointment'
 
-export default class AppointmentsRepository implements IAppointmentsRepository {
+export default class FakeAppointmentsRepository
+  implements IAppointmentsRepository {
   private appointments: Appointment[] = []
 
   public async create({

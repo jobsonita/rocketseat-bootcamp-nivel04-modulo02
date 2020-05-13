@@ -1,24 +1,36 @@
-// import AppError from '@shared/errors/AppError'
+import AppError from '@shared/errors/AppError'
 
 import FakeMailProvider from '@shared/container/providers/MailProvider/fakes/FakeMailProvider'
 
 import FakeUsersRepository from '../repositories/fakes/FakeUsersRepository'
+import FakeUserTokensRepository from '../repositories/fakes/FakeUserTokensRepository'
 
 import SendForgotPasswordEmailService from './SendForgotPasswordEmailService'
 
+let fakeUsersRepository: FakeUsersRepository
+let fakeUserTokensRepository: FakeUserTokensRepository
+let fakeMailProvider: FakeMailProvider
+
+let sendForgotPasswordEmail: SendForgotPasswordEmailService
+
 describe('SendForgotPasswordEmail', () => {
-  it('should be able to recover the password using the email', async () => {
-    const fakeMailProvider = new FakeMailProvider()
-    const fakeUsersRepository = new FakeUsersRepository()
+  beforeEach(() => {
+    fakeUsersRepository = new FakeUsersRepository()
+    fakeUserTokensRepository = new FakeUserTokensRepository()
+    fakeMailProvider = new FakeMailProvider()
 
-    const sendMail = jest.spyOn(fakeMailProvider, 'sendMail')
-
-    const sendForgotPasswordEmail = new SendForgotPasswordEmailService(
+    sendForgotPasswordEmail = new SendForgotPasswordEmailService(
       fakeUsersRepository,
+      fakeUserTokensRepository,
       fakeMailProvider
     )
+  })
 
-    await fakeUsersRepository.create({
+  it('should be able to recover the password using the email', async () => {
+    const generateToken = jest.spyOn(fakeUserTokensRepository, 'generate')
+    const sendMail = jest.spyOn(fakeMailProvider, 'sendMail')
+
+    const user = await fakeUsersRepository.create({
       name: 'User',
       email: 'user@gobarber.com',
       password: '123456',
@@ -26,6 +38,13 @@ describe('SendForgotPasswordEmail', () => {
 
     await sendForgotPasswordEmail.execute({ email: 'user@gobarber.com' })
 
+    expect(generateToken).toHaveBeenCalledWith(user.id)
     expect(sendMail).toHaveBeenCalled()
+  })
+
+  it('should not be able to recover the password of an inexistent user', async () => {
+    await expect(
+      sendForgotPasswordEmail.execute({ email: 'user@gobarber.com' })
+    ).rejects.toBeInstanceOf(AppError)
   })
 })

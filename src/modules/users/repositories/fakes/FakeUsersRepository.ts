@@ -5,7 +5,7 @@ import IUsersRepository from '@modules/users/repositories/IUsersRepository'
 
 import User from '@modules/users/infra/typeorm/entities/User'
 
-export default class UsersRepository implements IUsersRepository {
+export default class FakeUsersRepository implements IUsersRepository {
   private users: User[] = []
 
   public async create({
