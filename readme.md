@@ -32,6 +32,7 @@ Este projeto pode ser usado em conjunto com o front-end disponibilizado em [jobs
 - multer (configurado para armazenamento local)
 - tsyringe (injeção de dependências)
 - jest (testes automatizados)
+- nodemailer (envio de emails, fake smtp com Ethereal Email)
 - [VS Code](https://code.visualstudio.com) (editor de código preferido)
 - Docker (gerenciador de contêiners)
 - Contêiner postgres (através do Docker)
@@ -106,3 +107,27 @@ Após a conclusão dos testes, será gerada uma pasta `coverage` na raiz do proj
 ## Comandos utilizados na construção do projeto
 
 Caso deseje configurar um projeto seguindo os passos dos commits, listo abaixo os comandos executados nesta terceira parte da configuração. Este projeto utiliza como base o projeto [jobsonita/rocketseat-bootcamp-nivel04-modulo01](https://github.com/jobsonita/rocketseat-bootcamp-nivel04-modulo01).
+
+### Sessão 02
+
+#### Aula 06
+
+```
+yarn add nodemailer
+yarn add @types/nodemailer -D
+```
+
+A configuração atual do client do nodemailer sendo inicializado na classe EtherealMailProvider, com uma instância do EtherealMailProvider sendo registrada no container de injeção, não é ideal.
+Isso provavelmente será resolvido em aulas futuras.
+Uma opção seria criar "providers" separados para conexões com serviços externos, registrá-los como instâncias no container, e daí sim usá-los nos providers, no estilo:
+
+```
+constructor(
+  @inject('NodemailerProvider')
+  private nodemailerProvider: INodemailerProvider
+)
+
+...
+
+await this.nodemailerProvider.client.sendMail(...)
+```

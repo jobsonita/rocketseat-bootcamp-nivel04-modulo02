@@ -7,7 +7,7 @@ import cors from 'cors'
 import '@shared/container'
 import '@shared/infra/typeorm'
 
-import { tmpDir } from '@config/upload'
+import { uploadsDir } from '@config/upload'
 
 import AppError from '@shared/errors/AppError'
 
@@ -20,7 +20,7 @@ app.use(express.json())
 
 app.use(routes)
 
-app.use('/files', express.static(tmpDir))
+app.use('/files', express.static(uploadsDir))
 
 app.use((err: Error, req: Request, res: Response, _: NextFunction) => {
   if (err instanceof AppError) {
