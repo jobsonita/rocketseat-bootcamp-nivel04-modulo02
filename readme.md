@@ -131,3 +131,9 @@ constructor(
 
 await this.nodemailerProvider.client.sendMail(...)
 ```
+
+#### Aula 07
+
+```
+yarn add handlebars
+```
