@@ -33,6 +33,7 @@ Este projeto pode ser usado em conjunto com o front-end disponibilizado em [jobs
 - tsyringe (injeção de dependências)
 - jest (testes automatizados)
 - nodemailer (envio de emails, fake smtp com Ethereal Email)
+- handlebars (formatação de mensagens)
 - [VS Code](https://code.visualstudio.com) (editor de código preferido)
 - Docker (gerenciador de contêiners)
 - Contêiner postgres (através do Docker)
