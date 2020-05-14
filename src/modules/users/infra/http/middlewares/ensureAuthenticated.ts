@@ -5,7 +5,7 @@ import authConfig from '@config/auth'
 
 import AppError from '@shared/errors/AppError'
 
-interface TokenPayload {
+interface ITokenPayload {
   sub: string
 }
 
@@ -29,7 +29,7 @@ export default async (
   const token = match[1]
 
   try {
-    const decoded = verify(token, authConfig.secret) as TokenPayload
+    const decoded = verify(token, authConfig.secret) as ITokenPayload
 
     req.user = { id: decoded.sub }
 

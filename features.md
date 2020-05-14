@@ -12,7 +12,7 @@
 
 **RNF**
 
-- Utilizar <s>Mailtrap</s> Nodemailer com Ethereal Mail para testar envios em ambiente de desenvolvimento; :heavy_check_mark:
+- Utilizar <s>Mailtrap</s> Nodemailer com Ethereal Email para testar envios em ambiente de desenvolvimento; :heavy_check_mark:
 - Utilizar Amazon SES para envios em produção;
 - O envio de e-mails deve acontecer em segundo plano (background job);
 
