@@ -137,3 +137,8 @@ await this.nodemailerProvider.client.sendMail(...)
 ```
 yarn add handlebars
 ```
+
+#### Aula 08
+
+O esquema de templates atual, com as views do handlebars dentro de cada module, não é ideal.
+Eu pretendo mover esses arquivos para `@shared/infra/handlebars/email_templates` e criar um provider próprio para templates no futuro (com um método `getEmailTemplate(template_name)`).
