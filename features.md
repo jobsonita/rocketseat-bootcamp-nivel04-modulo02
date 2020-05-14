@@ -6,19 +6,19 @@
 
 **RF**
 
-- O usuário deve poder recuperar sua senha informando o seu e-mail;
-- O usuário deve receber um e-mail com instruções de recuperação de senha;
-- O usuário deve poder resetar sua senha;
+- O usuário deve poder recuperar sua senha informando o seu e-mail; :heavy_check_mark:
+- O usuário deve receber um e-mail com instruções de recuperação de senha; :heavy_check_mark:
+- O usuário deve poder resetar sua senha; :heavy_check_mark:
 
 **RNF**
 
-- Utilizar Mailtrap para testar envios em ambiente de desenvolvimento;
+- Utilizar <s>Mailtrap</s> Nodemailer com Ethereal Mail para testar envios em ambiente de desenvolvimento; :heavy_check_mark:
 - Utilizar Amazon SES para envios em produção;
 - O envio de e-mails deve acontecer em segundo plano (background job);
 
 **RN**
 
-- O link enviado por e-mail para resetar senha deve expirar em 2h;
+- O link enviado por e-mail para resetar senha deve expirar em 2h; :heavy_check_mark:
 - O usuário precisa confirmar a nova senha ao resetar sua senha;
 
 # Atualização do perfil
