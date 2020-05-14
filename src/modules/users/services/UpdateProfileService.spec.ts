@@ -39,6 +39,16 @@ describe('UpdateProfile', () => {
     expect(updatedUser.email).toBe('gobarber_user@gobarber.com')
   })
 
+  it('should not be able to update the profile of inexistent user', async () => {
+    await expect(
+      updateProfile.execute({
+        user_id: 'inexistent-user-id',
+        name: 'GoBarber User',
+        email: 'gobarber_user@gobarber.com',
+      })
+    ).rejects.toBeInstanceOf(AppError)
+  })
+
   it('should not be able to change to another user email', async () => {
     await fakeUsersRepository.create({
       name: 'Gobarber User 1',

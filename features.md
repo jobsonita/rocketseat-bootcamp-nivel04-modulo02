@@ -25,12 +25,12 @@
 
 **RF**
 
-- O usuário deve poder alterar dados do seu perfil;
+- O usuário deve poder alterar dados do seu perfil; :heavy_check_mark:
 
 **RN**
 
-- O usuário não pode alterar seu e-mail para um e-mail já utilizado;
-- Para atualizar sua senha, o usuário deve informar a senha antiga;
+- O usuário não pode alterar seu e-mail para um e-mail já utilizado; :heavy_check_mark:
+- Para atualizar sua senha, o usuário deve informar a senha antiga; :heavy_check_mark:
 - Para atualizar sua senha, o usuário precisa confirmar a nova senha;
 
 # Painel do prestador
