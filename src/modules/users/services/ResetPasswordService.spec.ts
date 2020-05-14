@@ -27,8 +27,6 @@ describe('ResetPassword', () => {
   })
 
   it('should be able to reset the password', async () => {
-    const generateHash = jest.spyOn(fakeHashProvider, 'generateHash')
-
     const user = await fakeUsersRepository.create({
       name: 'User',
       email: 'user@gobarber.com',
@@ -36,6 +34,8 @@ describe('ResetPassword', () => {
     })
 
     const { token } = await fakeUserTokensRepository.generate(user.id)
+
+    const generateHash = jest.spyOn(fakeHashProvider, 'generateHash')
 
     await resetPassword.execute({ token, password: '123123' })
 

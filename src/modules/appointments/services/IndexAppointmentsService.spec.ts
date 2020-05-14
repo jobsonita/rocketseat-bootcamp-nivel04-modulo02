@@ -5,18 +5,20 @@ import FakeAppointmentsRepository from '../repositories/fakes/FakeAppointmentsRe
 import CreateAppointmentService from './CreateAppointmentService'
 import IndexAppointmentsService from './IndexAppointmentsService'
 
+let fakeAppointmentsRepository: FakeAppointmentsRepository
+
+let createAppointment: CreateAppointmentService
+let indexAppointments: IndexAppointmentsService
+
 describe('IndexAppointments', () => {
+  beforeEach(() => {
+    fakeAppointmentsRepository = new FakeAppointmentsRepository()
+
+    createAppointment = new CreateAppointmentService(fakeAppointmentsRepository)
+    indexAppointments = new IndexAppointmentsService(fakeAppointmentsRepository)
+  })
+
   it('should be able to list appointments', async () => {
-    const fakeAppointmentsRepository = new FakeAppointmentsRepository()
-
-    const createAppointment = new CreateAppointmentService(
-      fakeAppointmentsRepository
-    )
-
-    const indexAppointments = new IndexAppointmentsService(
-      fakeAppointmentsRepository
-    )
-
     const appointments: Appointment[] = []
 
     const newAppointment = await createAppointment.execute({
