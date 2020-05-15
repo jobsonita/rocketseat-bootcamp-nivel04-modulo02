@@ -55,7 +55,7 @@
 
 **RF**
 
-- O usuário deve poder listar todos prestadores de serviço cadastrados;
+- O usuário deve poder listar todos prestadores de serviço cadastrados; :heavy_check_mark:
 - O usuário deve poder listar os dias com horários disponíveis na agenda do prestador;
 - O usuário deve poder listar horários disponíveis em um dia específico na agenda do prestador;
 - O usuário deve poder realizar um novo agendamento com um prestador;
