@@ -29,6 +29,10 @@ describe('ListProviderDayAvailability', () => {
 
     await Promise.all(appointmentCreationPromises)
 
+    jest
+      .spyOn(Date, 'now')
+      .mockImplementationOnce(() => new Date(2020, 3, 20).getTime())
+
     const availability = await listProviderDayAvailability.execute({
       provider_id: 'id',
       day: 20,
@@ -38,6 +42,25 @@ describe('ListProviderDayAvailability', () => {
 
     expect(availability).toEqual(
       hours.map((hour) => ({ hour, available: hour < 10 || hour > 14 }))
+    )
+  })
+
+  it('should list hours in the past as not available', async () => {
+    const hours = Array.from({ length: 18 - 8 }, (value, index) => index + 8)
+
+    jest
+      .spyOn(Date, 'now')
+      .mockImplementationOnce(() => new Date(2020, 4, 20, 11).getTime())
+
+    const availability = await listProviderDayAvailability.execute({
+      provider_id: 'id',
+      day: 20,
+      month: 5,
+      year: 2020,
+    })
+
+    expect(availability).toEqual(
+      hours.map((hour) => ({ hour, available: hour >= 12 }))
     )
   })
 })
