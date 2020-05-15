@@ -1,8 +1,9 @@
 import { Between, getRepository, Repository } from 'typeorm'
 
-import { endOfMonth, startOfMonth } from 'date-fns'
+import { endOfDay, endOfMonth, startOfDay, startOfMonth } from 'date-fns'
 
 import ICreateAppointmentsDTO from '@modules/appointments/dtos/ICreateAppointmentDTO'
+import IFindAllInDayFromProviderDTO from '@modules/appointments/dtos/IFindAllInDayFromProviderDTO'
 import IFindAllInMonthFromProviderDTO from '@modules/appointments/dtos/IFindAllInMonthFromProviderDTO'
 
 import IAppointmentsRepository from '@modules/appointments/repositories/IAppointmentsRepository'
@@ -31,6 +32,22 @@ export default class AppointmentsRepository implements IAppointmentsRepository {
 
   public async findByDate(date: Date): Promise<Appointment | undefined> {
     return this.ormRepository.findOne({ where: { date } })
+  }
+
+  public async findAllInDayFromProvider({
+    provider_id,
+    day,
+    month,
+    year,
+  }: IFindAllInDayFromProviderDTO): Promise<Appointment[]> {
+    const date = new Date(year, month - 1, day)
+
+    return this.ormRepository.find({
+      where: {
+        provider_id,
+        date: Between(startOfDay(date), endOfDay(date)),
+      },
+    })
   }
 
   public async findAllInMonthFromProvider({
