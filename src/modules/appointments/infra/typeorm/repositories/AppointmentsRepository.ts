@@ -1,5 +1,6 @@
-import { endOfMonth, startOfMonth } from 'date-fns'
 import { Between, getRepository, Repository } from 'typeorm'
+
+import { endOfMonth, startOfMonth } from 'date-fns'
 
 import ICreateAppointmentsDTO from '@modules/appointments/dtos/ICreateAppointmentDTO'
 import IFindAllInMonthFromProviderDTO from '@modules/appointments/dtos/IFindAllInMonthFromProviderDTO'

@@ -1,4 +1,5 @@
 import { inject, injectable } from 'tsyringe'
+
 import { differenceInHours } from 'date-fns'
 
 import AppError from '@shared/errors/AppError'
