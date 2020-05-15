@@ -45,7 +45,7 @@ export default class ListProviderDayAvailabilityService {
       (value, index) => index + 8
     )
 
-    const currentHour = getHours(new Date(Date.now()))
+    const currentHour = getHours(Date.now())
 
     const availability = hoursInDay.map((hour) => {
       const appointmentInHourExists = appointments.find(

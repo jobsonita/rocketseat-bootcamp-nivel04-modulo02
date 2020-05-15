@@ -21,9 +21,14 @@ describe('IndexAppointments', () => {
   it('should be able to list appointments', async () => {
     const appointments: Appointment[] = []
 
+    jest
+      .spyOn(Date, 'now')
+      .mockImplementationOnce(() => new Date(2020, 4, 10, 12).getTime())
+
     const newAppointment = await createAppointment.execute({
-      date: new Date(),
+      date: new Date(2020, 4, 10, 13),
       provider_id: '123123',
+      user_id: 'id',
     })
 
     appointments.push(newAppointment)
