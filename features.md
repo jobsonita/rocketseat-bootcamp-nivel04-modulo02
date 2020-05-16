@@ -56,9 +56,9 @@
 **RF**
 
 - O usuário deve poder listar todos prestadores de serviço cadastrados; :heavy_check_mark:
-- O usuário deve poder listar os dias com horários disponíveis na agenda do prestador;
-- O usuário deve poder listar horários disponíveis em um dia específico na agenda do prestador;
-- O usuário deve poder realizar um novo agendamento com um prestador;
+- O usuário deve poder listar os dias com horários disponíveis na agenda do prestador; :heavy_check_mark:
+- O usuário deve poder listar horários disponíveis em um dia específico na agenda do prestador; :heavy_check_mark:
+- O usuário deve poder realizar um novo agendamento com um prestador; :heavy_check_mark:
 
 **RNF**
 
@@ -66,8 +66,8 @@
 
 **RN**
 
-- Cada agendamento deve durar 1h exatamente;
-- Os agendamentos devem estar disponíveis entre 8h e 18h (Primeiro às 8h, último às 17h);
-- O usuário não pode agendar em um horário já ocupado;
-- O usuário não pode agendar em um horário que já passou;
-- O usuário não pode agendar serviços consigo mesmo;
+- Cada agendamento deve durar 1h exatamente; :heavy_check_mark:
+- Os agendamentos devem estar disponíveis entre 8h e 18h (Primeiro às 8h, último às 17h); :heavy_check_mark:
+- O usuário não pode agendar em um horário já ocupado; :heavy_check_mark:
+- O usuário não pode agendar em um horário que já passou; :heavy_check_mark:
+- O usuário não pode agendar serviços consigo mesmo; :heavy_check_mark:

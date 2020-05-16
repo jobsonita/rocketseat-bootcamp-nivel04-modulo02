@@ -1,6 +1,6 @@
 import { inject, injectable } from 'tsyringe'
 
-import { getDate, getDaysInMonth } from 'date-fns'
+import { getDate, getHours, getDaysInMonth, isAfter } from 'date-fns'
 
 import IAppointmentsRepository from '../repositories/IAppointmentsRepository'
 
@@ -44,14 +44,31 @@ export default class ListProviderMonthAvailabilityService {
       (value, index) => index + 1
     )
 
+    const hoursInDay = Array.from(
+      { length: 18 - 8 },
+      (value, index) => index + 8
+    )
+
+    const currentTime = Date.now()
+
     const availability = daysInMonth.map((day) => {
       const appointmentsInDay = appointments.filter(
         (appointment) => getDate(appointment.date) === day
       )
 
+      const availableHours = hoursInDay.filter((hour) => {
+        const appointmentInHour = appointmentsInDay.find(
+          (appointment) => getHours(appointment.date) === hour
+        )
+
+        const appointmentTime = new Date(year, month - 1, day, hour)
+
+        return !appointmentInHour && isAfter(appointmentTime, currentTime)
+      })
+
       return {
         day,
-        available: appointmentsInDay.length < 10,
+        available: availableHours.length > 0,
       }
     })
 
